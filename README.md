@@ -1,3 +1,6 @@
+# An example of using a timer is the flickering of the built-in LED on the board.
+
+```c++
 #include <Timer.h>
 
 //Timer timer(2000);
@@ -19,3 +22,4 @@ void loop() {
   digitalWrite(LED_BUILTIN, state);
 
 }
+```
