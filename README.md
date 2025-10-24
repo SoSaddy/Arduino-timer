@@ -1,10 +1,12 @@
-# An example of using a timer is the flickering of the built-in LED on the board.
+# Пример работы таймера
+
+Суть таймера зулючатеся в том, чтобы не прерывать поток, как это делает delay().
 
 ```c++
 #include <Timer.h>
 
-//Timer timer(2000);
-Timer timer;
+Timer timer;          // без аргумента по умолчанию 1000мс
+//Timer timer(2000);  // аргумент установки в мс
 
 bool state;
 
@@ -16,8 +18,8 @@ void setup() {
 
 void loop() {
 
-  if (timer.get()) state = !state;
-  //if (timer.get(2000)) state = !state;
+  if (timer.get()) state = !state;        // проверка по установленной внутри задержке
+  //if (timer.get(2000)) state = !state;  // проверка по внешней заданной задержке
   
   digitalWrite(LED_BUILTIN, state);
 
