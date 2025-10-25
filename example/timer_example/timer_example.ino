@@ -1,26 +1,15 @@
+/*
+Мигание светодиода каждые 2000мс по переключению внутреннего состояния.
+*/
+
 #include <Timer.h>    // https://github.com/SoSaddy/Arduino-timer.git
 
-//Timer timer(2000);  // Экземпляр с установкой задержки предварительно
-Timer timer;          // Экземпляр без предварительной установки задержки (по умолчанию 1000мс)
-
-bool state;           // Статус светодиода
+Timer timer(2000, AS_SWITCH);
 
 void setup() {
-  
-  // Назначение встроенного светодиода на плате
   pinMode(LED_BUILTIN, OUTPUT);
-
 }
 
 void loop() {
-
-  // Проверка таймера с внутренней задержкой
-  if (timer.get()) state = !state;
-  
-  // Проверка таймера с установленной задержкой
-  //if (timer.get(2000)) state = !state;
-  
-  // Мигание светодиодом
-  digitalWrite(LED_BUILTIN, state);
-
+  digitalWrite(LED_BUILTIN, timer.get());
 }
